@@ -1,11 +1,18 @@
 import { registerApplication, start } from "single-spa";
 import * as isActive from "./activity-functions";
 
-registerApplication(
-  "@mf-demo/navbar",
-  () => System.import("@mf-demo/navbar"),
-  isActive.navbar
-);
+// registerApplication(
+//   "@mf-demo/navbar",
+//   () => System.import("@mf-demo/navbar"),
+//   isActive.navbar,
+// );
+
+registerApplication({
+  name: "@mf-demo/navbar",
+  app: () => System.import("@mf-demo/navbar"),
+  activeWhen: isActive.navbar,
+  customProps:  { authToken: 'd83jD63UdZ6RS6f70D0' }
+});
 
 registerApplication(
   "@mf-demo/home",
